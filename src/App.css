@@ -1,0 +1,42 @@
+* {
+  background-color: lightcoral;
+  font-size: 40px;
+}
+
+.rel {
+  margin-top: 300px;
+  justify-content: center;
+  display: flex;
+
+  background-color: black;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.chrone {
+  margin-top: 500px;
+}
+
+h1 {
+  justify-content: center;
+  display: flex;
+  color: aliceblue;
+}
+
+button {
+  justify-content: center;
+  display: inline;
+  text-align: center;
+  float: left;
+  margin: 100px;
+  margin-left: 98px;
+  margin-right: 45px;
+
+  border-radius: 19px;
+  background: black;
+  color: aliceblue;
+}
+
+div {
+  height: 120px;
+}
