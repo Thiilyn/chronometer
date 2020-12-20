@@ -81,7 +81,7 @@ class Relogio extends Component{
         <h1 className="chone">Chronometer</h1>
         <button className="zero" onClick = {() => {this.zerarChronometer()}}>Zerar</button>
     <button className="start" onClick = {() => {this.startChronometer()}}>{this.state.nameStop}</button>
-         <h1 className="rel">{this.state.minute}:{this.state.second}:{this.state.mile}</h1>
+         <h1 className="rel">{this.state.hour}:{this.state.minute}:{this.state.second}:{this.state.mile}</h1>
       </div>
     )
   }
