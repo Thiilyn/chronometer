@@ -25,11 +25,12 @@ h1 {
 
 button {
   justify-content: center;
-  display: inline;
+  display: inline-block;
   text-align: center;
   float: left;
+
   margin: 100px;
-  margin-left: 98px;
+  margin-left: 350px;
   margin-right: 45px;
 
   border-radius: 19px;

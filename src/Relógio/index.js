@@ -7,23 +7,35 @@ class Relogio extends Component{
       hour: 0,
       minute: 0,
       second: 0,
-      mile: 0
+      mile: 0,
+      stop: false,
+      nameStop: "Stop"
     }
   }
 
   increment(){
     this.setState(
       (state) => {
-        if(state.mile >= 999){
-          this.zerarms();
-          this.incrementarS();
-        }
+        if(this.state.stop === false){
+          if(state.mile >= 999){
+            this.zerarms()
+            return ({second: state.second + 1})
+          }
+  
+          if(state.second >= 60){
+            this.zerarms()
+            this.zerarss()
+            return({minute: state.minute + 1})
+          }
 
-        if(state.mile == 999){
-          this.zerarms();
-          this.setState({segundo: this.state.second +1})
+          if(state.minute >= 60){
+            this.zerarms()
+            this.zerarss()
+            this.zerarmin()
+            return({minute: state.minute + 1})
+          }
+          return ({mile: state.mile + 1})
         }
-        return({mile: state.mile + 1})
       }
     )
   }
@@ -36,25 +48,39 @@ class Relogio extends Component{
     this.setState({second:0})
   }
 
-  incrementarS(){
-    this.setState({segundo: this.state.second +1})
+  zerarmin(){
+    this.setState({minute:0})
   }
 
-  incrementarM(){
-    this.setState({minuto: this.state.minute +1})
+  zerarChronometer(){
+    this.setState({
+      mile: 0,
+      second: 0,
+      minute: 0
+    })
+  }
+
+  startChronometer(){
+    this.setState({
+      stop: !this.state.stop
+    })
+
+    if(this.state.stop){
+      this.state.nameStop = "Stop"
+    }else 
+      this.state.nameStop = "Play"
   }
 
   componentDidMount(){
-    this.timer = setInterval( () => this.increment(),1)
+    this.timerID = setInterval( () => this.increment(),0.0001)
   }
 
   render(){
     return(
       <div className="main">
         <h1 className="chone">Chronometer</h1>
-        <button className="zero">Zerar</button>
-         <button className="start">Start</button>
-         <button className="stop">Stop</button>
+        <button className="zero" onClick = {() => {this.zerarChronometer()}}>Zerar</button>
+    <button className="start" onClick = {() => {this.startChronometer()}}>{this.state.nameStop}</button>
          <h1 className="rel">{this.state.minute}:{this.state.second}:{this.state.mile}</h1>
       </div>
     )
